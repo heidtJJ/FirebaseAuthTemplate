@@ -41,7 +41,7 @@
             android:layout_marginTop="16dp"
             android:background="@layout/rounded_textview"
             android:ems="10"
-            android:hint="@string/PasswordKey"
+            android:hint="@string/Password"
             android:inputType="textPassword"
             android:padding="10dp"
             android:textSize="25sp" />
@@ -53,7 +53,7 @@
             android:layout_marginTop="16dp"
             android:background="@layout/rounded_textview"
             android:ems="10"
-            android:hint="@string/PasswordKey"
+            android:hint="@string/PasswordAgain"
             android:inputType="textPassword"
             android:padding="10dp"
             android:textSize="25sp" />
