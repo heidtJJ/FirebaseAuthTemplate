@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FirebaseLogin</string>
+
+    <!-- Login Activity Strings -->
+    <string name="Login">LOGIN</string>
+    <string name="SignUpHere">Don\'t have an account? Click to sign up here</string>
+    <string name="LoginHere">Already made an account? Click to login here</string>
+    <string name="CreateAccount">CREATE ACCOUNT</string>
+    <string name="PasswordKey">Password</string>
+    <string name="PasswordAgain">Password again</string>
+    <string name="Email">Email</string>
+    <string name="GradCap">Graduation Cap</string>
+    <string name="Accounts">Accounts</string>
+    <string name="Advisors">Advisors</string>
+
+</resources>
+

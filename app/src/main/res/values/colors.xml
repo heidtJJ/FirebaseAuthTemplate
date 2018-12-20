@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#ff3c83</color>
+    <color name="colorAccentEnd">#ff649d</color>
+    <color name="colorAccentFade">#ff7dae</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="circleRed">#F44336</color>
+    <color name="circleBlue">#5c72ff</color>
+    <color name="circleGreen">#4CAF50</color>
+    <color name="test">#0000ff</color>
+    <color name="grey">#f2f2f2</color>
+    <color name="offWhite">#e7e7e7</color>
+    <color name="trans">#000000ff</color>
+    <color name="circleYellow">#FFC107</color>
+    <color name="colorDull">#e9f1ff</color>
+</resources>
