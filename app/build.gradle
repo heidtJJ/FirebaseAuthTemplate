@@ -4,6 +4,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
+        resConfigs "en" // And any other languages you support
         applicationId "com.example.android.firebaselogin"
         minSdkVersion 17
         targetSdkVersion 28
@@ -32,4 +33,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:16.0.3'
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
+
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
 }

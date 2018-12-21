@@ -2,43 +2,77 @@ package com.example.android.firebaselogin;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Map;
 
-public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth = null;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    // Constants
     private static final String DARK_GRAY = "#A9A9A9";
-    private static final String BLACK = "#000000";
+
+    // Activity objects
+    private FirebaseAuth mAuth = null;
+    AccountManager accountManager = null;
+
+    // UI elements
+    private Button emailLoginButton = null;
+    private Button googleLoginButton = null;
+    private Button facebookLoginButton = null;
+    private TextView switchAuthenticationButton = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mAuth = FirebaseAuth.getInstance();
+
+        // Initialize UI views.
+        emailLoginButton = findViewById(R.id.loginEmailButton);
+        googleLoginButton = findViewById(R.id.loginGoogleButton);
+        facebookLoginButton = findViewById(R.id.loginFacebookButton);
+        switchAuthenticationButton = findViewById(R.id.textViewSignUp);
+
+        emailLoginButton.setOnClickListener(this);
+        googleLoginButton.setOnClickListener(this);
+        facebookLoginButton.setOnClickListener(this);
+        switchAuthenticationButton.setOnClickListener(this);
+
+        accountManager = new AccountManager(this);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            Toast.makeText(this, "User is not null", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "User is null", Toast.LENGTH_SHORT).show();
-        }
-
+        accountManager.directUser(MainActivity.class);
     }
 
-    public void createAccount(final View view) {
+    @Override
+    public void onClick(final View view) {
+        if (view == emailLoginButton) {
+
+        } else if (view == googleLoginButton) {
+
+        } else if (view == facebookLoginButton) {
+
+        } else if (view == switchAuthenticationButton) {
+            switchToCreateAccountActivity(view);
+        }
+    }
+
+    /**
+     * Switch to the CreateAccountActivity class.
+     *
+     * @param view
+     */
+    private void switchToCreateAccountActivity(final View view) {
         final TextView curView = (TextView) view;
         curView.setTextColor(Color.parseColor(DARK_GRAY));
         finish();
