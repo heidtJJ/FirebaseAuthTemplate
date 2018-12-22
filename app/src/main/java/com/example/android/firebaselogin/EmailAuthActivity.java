@@ -18,15 +18,24 @@ public class EmailAuthActivity extends AppCompatActivity {
     private ProgressDialog progressDialog = null;
     private AccountManager accountManager = null;
 
+    private boolean userLoggingIn = false;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_auth);
 
+        String authAction = getIntent().getStringExtra(getText(R.string.AuthAction).toString());
+
+        // Initialize UI views.
         emailEditText = findViewById(R.id.emailField);
         passwordEditText = findViewById(R.id.passwordField);
         passwordAgainEditText = findViewById(R.id.passwordAgainField);
 
+        if (authAction.equals(getText(R.string.Login).toString())) {
+            passwordAgainEditText.setVisibility(View.GONE);
+            userLoggingIn = true;
+        }
         progressDialog = new ProgressDialog(this);
         accountManager = new AccountManager(this);
     }
@@ -34,7 +43,7 @@ public class EmailAuthActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        accountManager.directUser(MainActivity.class);
+        accountManager.directIfUserLoggedIn(MainActivity.class);
     }
 
 
@@ -43,15 +52,16 @@ public class EmailAuthActivity extends AppCompatActivity {
         String password = passwordEditText.getText().toString();
         String passwordAgain = passwordAgainEditText.getText().toString();
 
-        if (email.isEmpty() || password.isEmpty() || passwordAgain.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty() || (passwordAgain.isEmpty() && !userLoggingIn)) {
             Toast.makeText(this, getText(R.string.EmptyField).toString(), Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (!password.equals(passwordAgain)) {
+        if (userLoggingIn)
+            accountManager.loginEmailAccount(email, password, this, progressDialog);
+        else if (!password.equals(passwordAgain))
             Toast.makeText(this, getText(R.string.PasswordMismatch).toString(), Toast.LENGTH_LONG).show();
-            return;
-        }
-        accountManager.createNewEmailAccount(email, password, passwordAgain, progressDialog);
+        else
+            accountManager.createNewEmailAccount(email, password, passwordAgain, progressDialog);
     }
 }

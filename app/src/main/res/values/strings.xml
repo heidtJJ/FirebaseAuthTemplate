@@ -1,23 +1,32 @@
 <resources>
     <string name="app_name">FirebaseLogin</string>
 
-    <!-- Login Activity Strings -->
+    <!-- General Authentication Strings -->
     <string name="SignInViaEmail">Sign in with email</string>
     <string name="SignUpViaEmail">Sign up with email</string>
     <string name="SignUpHere">Don\'t have an account? Click to sign up here</string>
     <string name="SignInHere">Already made an account? Click to login here</string>
     <string name="facebook_sign_in">Sign in with Facebook</string>
     <string name="facebook_sign_up">Sign up with Facebook</string>
-    <string name="CreateAccount">CREATE ACCOUNT</string>
-    <string name="Password">Password</string>
-    <string name="PasswordAgain">Password again</string>
+    <string name="AuthAction">AuthAction</string>
+    <string name="appLogo">AppLogo</string>
     <string name="Email">Email</string>
-    <string name="GradCap">Graduation Cap</string>
-    <string name="Accounts">Accounts</string>
-    <string name="Advisors">Advisors</string>
+    <string name="Google">Google</string>
+    <string name="Facebook">Facebook</string>
+
+    <!-- Login Activity Strings -->
+    <string name="Login">Login</string>
+    <string name="Password">Password</string>
+
+    <!-- Create Account Activity Strings -->
+    <string name="CreateAccount">Create Account</string>
+    <string name="PasswordAgain">Password again</string>
+
+    <!-- Error Message Strings -->
     <string name="EmptyField">At least one of the entered fields was empty!</string>
     <string name="PasswordMismatch">The entered passwords do not match!</string>
     <string name="AuthFailed">Authentication failed. Please try again later.</string>
+
 
     <string name="facebook_app_id">1675147862585775</string>
     <string name="fb_login_protocol_scheme">fb1675147862585775</string>

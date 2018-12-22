@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/appLogo"
             android:src="@mipmap/gradcap" />
 
         <LinearLayout
@@ -28,14 +29,15 @@
             <ImageView
                 android:layout_width="127dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
+                android:contentDescription="@string/Email"
                 android:src="@mipmap/mail" />
 
             <Button
                 android:id="@+id/loginEmailButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
                 android:autoSizeMaxTextSize="50sp"
                 android:autoSizeMinTextSize="12sp"
                 android:autoSizeStepGranularity="2sp"
@@ -57,14 +59,15 @@
             <ImageView
                 android:layout_width="127dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
+                android:contentDescription="@string/Google"
                 android:src="@mipmap/google" />
 
             <Button
                 android:id="@+id/loginGoogleButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
                 android:autoSizeMaxTextSize="50sp"
                 android:autoSizeMinTextSize="12sp"
                 android:autoSizeStepGranularity="2sp"
@@ -85,14 +88,15 @@
             <ImageView
                 android:layout_width="127dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
+                android:contentDescription="@string/Facebook"
                 android:src="@mipmap/facebook" />
 
             <Button
                 android:id="@+id/loginFacebookButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="start"
                 android:autoSizeMaxTextSize="50sp"
                 android:autoSizeMinTextSize="12sp"
                 android:autoSizeStepGranularity="2sp"
@@ -107,8 +111,9 @@
         <TextView
             android:id="@+id/textViewSignUp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:autoSizeMaxTextSize="50sp"
             android:autoSizeMinTextSize="16sp"
             android:autoSizeStepGranularity="2sp"
