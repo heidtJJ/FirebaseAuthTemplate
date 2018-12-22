@@ -76,6 +76,14 @@ class AccountManager {
                 });
     }
 
+    /**
+     * This method creates a account/authentication for a user via email and password.
+     *
+     * @param email         the email to be used in the authentication of the current user.
+     * @param password      the password to be used in the authentication of the current user.
+     * @param passwordAgain the password to be used in the authentication of the current user. Must
+     *                      match other password entry.
+     */
     void createNewEmailAccount(final String email, final String password,
                                final String passwordAgain) {
 

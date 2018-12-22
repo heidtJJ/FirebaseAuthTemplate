@@ -17,6 +17,7 @@ public class EmailAuthActivity extends AppCompatActivity {
     // Activity objects
     private AccountManager accountManager = null;
 
+    // Indicates whether the user is logging in or creating a new account
     private boolean userLoggingIn = false;
 
     @Override
@@ -31,10 +32,13 @@ public class EmailAuthActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordField);
         passwordAgainEditText = findViewById(R.id.passwordAgainField);
 
+        // Determine whether user is logging in or creating account.
         if (authAction.equals(getText(R.string.Login).toString())) {
             passwordAgainEditText.setVisibility(View.GONE);
             userLoggingIn = true;
         }
+
+        // Initialize activity objects.
         accountManager = new AccountManager(this, new ProgressDialog(this));
     }
 
@@ -44,17 +48,24 @@ public class EmailAuthActivity extends AppCompatActivity {
         accountManager.directIfUserLoggedIn(MainActivity.class);
     }
 
-
+    /**
+     * This method is an onClick listener for the create-account button. The method will create a
+     * new account associated with the email address depending on error checking results.
+     *
+     * @param view the button clicked to create a new account
+     */
     public void createEmailAccount(final View view) {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String passwordAgain = passwordAgainEditText.getText().toString();
 
+        // Check if any of the required fields are empty.
         if (email.isEmpty() || password.isEmpty() || (passwordAgain.isEmpty() && !userLoggingIn)) {
             Toast.makeText(this, getText(R.string.EmptyField).toString(), Toast.LENGTH_LONG).show();
             return;
         }
 
+        // Perform account creation depending on whether user is logging in or creating account.
         if (userLoggingIn)
             accountManager.loginEmailAccount(email, password, this);
         else if (!password.equals(passwordAgain))

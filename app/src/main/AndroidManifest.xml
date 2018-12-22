@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".EmailAuthActivity"></activity>
+        <activity android:name=".EmailAuthActivity" />
     </application>
 
 </manifest>
