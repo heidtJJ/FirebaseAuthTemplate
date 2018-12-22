@@ -1,5 +1,6 @@
 package com.example.android.firebaselogin;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-import static com.example.android.firebaselogin.AccountManager.RC_SIGN_IN;
+import static com.example.android.firebaselogin.AccountManager.RC_SIGN_IN_GOOGLE;
 
 public class CreateAccountActivity extends AppCompatActivity implements View.OnClickListener {
     // Constants
@@ -62,7 +63,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        accountManager = new AccountManager(this);
+        accountManager = new AccountManager(this, new ProgressDialog(this));
     }
 
     @Override
@@ -92,12 +93,12 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == RC_SIGN_IN_GOOGLE) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                accountManager.firebaseAuthWithGoogle(account, this);
+                accountManager.firebaseAuthWithGoogle(account);
             } catch (final ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
@@ -108,8 +109,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     /**
      * User wants to log in instead of create an account. Switch to
      * the LoginActivity.
-     *
-     * @param view The view being pressed to switch authentication functionality.
      */
     public void switchToLoginActivity(final View view) {
         final TextView curView = (TextView) view;
@@ -125,7 +124,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
      */
     private void googleSignUp() {
         final Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        startActivityForResult(signInIntent, RC_SIGN_IN_GOOGLE);
     }
 
 }

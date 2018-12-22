@@ -1,10 +1,12 @@
 package com.example.android.firebaselogin;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -17,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged_in);
 
-        accountManager = new AccountManager(this);
+        accountManager = new AccountManager(this, new ProgressDialog(this));
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void logout(final View view) {
         mAuth.signOut();
+        LoginManager.getInstance().logOut();
+
         finish();
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

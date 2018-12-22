@@ -92,19 +92,34 @@
                 android:contentDescription="@string/Facebook"
                 android:src="@mipmap/facebook" />
 
-            <Button
-                android:id="@+id/loginFacebookButton"
+            <FrameLayout
+                android:id="@+id/FrameLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:autoSizeMaxTextSize="50sp"
-                android:autoSizeMinTextSize="12sp"
-                android:autoSizeStepGranularity="2sp"
-                android:autoSizeTextType="uniform"
-                android:background="@drawable/rounded_button_login"
-                android:padding="10dp"
-                android:text="@string/facebook_sign_in"
-                android:textColor="@color/white" />
+                android:layout_below="@+id/no_network_bar">
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/loginFacebookButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:autoSizeMaxTextSize="50sp"
+                    android:autoSizeMinTextSize="12sp"
+                    android:autoSizeStepGranularity="2sp"
+                    android:autoSizeTextType="uniform"
+                    android:background="@drawable/rounded_button_login"
+                    android:onClick="onClickFacebookButton"
+                    android:padding="10dp"
+                    android:text="@string/facebook_sign_in"
+                    android:textColor="@color/white" />
+
+            </FrameLayout>
 
         </LinearLayout>
 

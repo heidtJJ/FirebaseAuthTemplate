@@ -15,7 +15,6 @@ public class EmailAuthActivity extends AppCompatActivity {
     private EditText passwordAgainEditText = null;
 
     // Activity objects
-    private ProgressDialog progressDialog = null;
     private AccountManager accountManager = null;
 
     private boolean userLoggingIn = false;
@@ -36,8 +35,7 @@ public class EmailAuthActivity extends AppCompatActivity {
             passwordAgainEditText.setVisibility(View.GONE);
             userLoggingIn = true;
         }
-        progressDialog = new ProgressDialog(this);
-        accountManager = new AccountManager(this);
+        accountManager = new AccountManager(this, new ProgressDialog(this));
     }
 
     @Override
@@ -58,10 +56,10 @@ public class EmailAuthActivity extends AppCompatActivity {
         }
 
         if (userLoggingIn)
-            accountManager.loginEmailAccount(email, password, this, progressDialog);
+            accountManager.loginEmailAccount(email, password, this);
         else if (!password.equals(passwordAgain))
             Toast.makeText(this, getText(R.string.PasswordMismatch).toString(), Toast.LENGTH_LONG).show();
         else
-            accountManager.createNewEmailAccount(email, password, passwordAgain, progressDialog);
+            accountManager.createNewEmailAccount(email, password, passwordAgain);
     }
 }
